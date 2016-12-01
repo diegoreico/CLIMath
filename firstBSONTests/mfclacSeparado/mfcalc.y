@@ -15,7 +15,13 @@
 %code requires {
   #include "dataStructure.h"
   #include "analizadorLexico.h"
-  void init_table (void);
+
+  struct init{
+    char const *fname;
+    double (*fnct) (double);
+  };
+
+  void init_table (struct init* arith_fncts);
 }
 
 %define api.value.type union /* Generate YYSTYPE from these types:  */
@@ -57,24 +63,9 @@ exp:
 /* End of grammar.  */
 %%
 
-struct init{
-  char const *fname;
-  double (*fnct) (double);
-};
-
-struct init const arith_fncts[] =
-{
-  { "atan", atan },
-  { "cos",  cos  },
-  { "exp",  exp  },
-  { "ln",   log  },
-  { "sin",  sin  },
-  { "sqrt", sqrt },
-  { 0, 0 },
-};
 
 /* Put arithmetic functions in table.  */
-void init_table (void)
+void init_table (struct init* arith_fncts)
 {
   int i;
   for (i = 0; arith_fncts[i].fname != 0; i++)
