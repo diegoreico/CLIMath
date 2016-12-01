@@ -11,14 +11,18 @@ intérprete de comando para introducir expresiones matematicas
 	- non se fai declarion de tipos
 	- todas as operacions son sobre número reales 1+0.5 = 1.5
 	- se puede trabajar con constantes pi, e ,etc
+
 	- como gestionar expresiones
 			- como interprete de comandos
 			- ejecutando un fichero que contiene una secuencia de expresiones
 				-utilizar fichero como argumento al invocar la consola
 				-durate la ejecución de la linea de comandos permitir utilizar un comando que realice la carga de un fichero.(Todo o contexto queda como esta e se lle añade ao contexto o contenido do archivo)
+
 	- gestion de variables mediante a tabla de símbolos
 			-lexema,componenteLexico,valor
+
 	- comando para permitir imprimir tabla de simbolos con identificadores e valores actuales
+
 	- gestión de errores:
 		- utilizar variable que no ha sido inicializada
 		- reasignaciones a una variable

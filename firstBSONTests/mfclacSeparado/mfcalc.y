@@ -15,6 +15,7 @@
 %code requires {
   #include "dataStructure.h"
   #include "analizadorLexico.h"
+  #include "errors.h"
 }
 
 %define api.value.type union /* Generate YYSTYPE from these types:  */
@@ -59,4 +60,5 @@ exp:
 /* Called by yyparse on error.  */
 void yyerror (char const *s){
   fprintf (stderr, "%s\n", s);
+  showError(ERROR_UNEXPECTED_WTF,-1);
 }

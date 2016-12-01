@@ -44,8 +44,9 @@ extern int yydebug;
 
   #include "dataStructure.h"
   #include "analizadorLexico.h"
+  #include "errors.h"
 
-#line 49 "mfcalc.tab.h" /* yacc.c:1909  */
+#line 50 "mfcalc.tab.h" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -73,7 +74,7 @@ union YYSTYPE
   symrec* VAR;
   /* FNCT  */
   symrec* FNCT;
-#line 77 "mfcalc.tab.h" /* yacc.c:1909  */
+#line 78 "mfcalc.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
