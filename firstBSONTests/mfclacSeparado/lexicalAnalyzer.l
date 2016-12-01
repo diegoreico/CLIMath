@@ -32,7 +32,16 @@ Quit        \:q
 {Help}            return HELP;
 {Integer}         {yylval.NUM = atof(yytext); return NUM;}
 {Float}						{yylval.NUM = atof(yytext); return NUM;}
-{Identifier}			{ putsym (yytext, VAR);return VAR;}
+{Identifier}			{
+                    symrec *s;
+                    s = getsym (yytext);
+
+                    if (s == 0)
+                      s = putsym (yytext, VAR);
+
+                    *((symrec**) &yylval) = s;
+
+                    return VAR;}
 [ \t\r]						/* NOTHING */
 [\n]						  {numeroLineas++; return yytext[0];}
 \/	|
