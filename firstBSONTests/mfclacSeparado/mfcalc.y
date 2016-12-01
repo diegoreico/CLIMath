@@ -45,7 +45,10 @@ line:
   '\n'
 | QUIT '\n'       { exit(0);}
 | HELP '\n'       { printf("\n CLIMath v0.1 System Help");
-                    printf("\n==========================");
+                    printf("\n===============================");
+                    printf("\nOpciones disponibles:");
+                    printf("\n:h --> Acceder a la ayuda.");
+                    printf("\n:q --> Salir de la aplicación.");
                   }
 | exp ';' '\n'    { printf ("%.10g\n", $1); }
 | exp '\n'    { ; }
@@ -56,7 +59,7 @@ exp:
   NUM                { $$ = $1;                         }
 | VAR                { $$ = $1->value.var;              }
 | VAR '=' exp        { $$ = $3; $1->value.var = $3;     }
-| FNCT '(' exp ')'   { $$ = (*($1->value.fnctptr))($3); }
+| VAR '(' exp ')'    { $$ = (*($1->value.fnctptr))($3); }
 | exp '+' exp        { $$ = $1 + $3;                    }
 | exp '-' exp        { $$ = $1 - $3;                    }
 | exp '*' exp        { $$ = $1 * $3;                    }
