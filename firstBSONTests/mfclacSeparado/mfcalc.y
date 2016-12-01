@@ -37,8 +37,9 @@ input:
 
 line:
   '\n'
-| exp '\n'   { printf ("%.10g\n", $1); }
-| error '\n' { yyerrok;                }
+| exp '!' '\n'   { printf ("%.10g\n", $1); }
+| exp '\n'   { ; }
+| error '\n' { yyerrok; }
 ;
 
 exp:
