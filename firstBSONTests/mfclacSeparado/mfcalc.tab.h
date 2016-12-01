@@ -45,14 +45,7 @@ extern int yydebug;
   #include "dataStructure.h"
   #include "analizadorLexico.h"
 
-  struct init{
-    char const *fname;
-    double (*fnct) (double);
-  };
-
-  void init_table (struct init* arith_fncts);
-
-#line 56 "mfcalc.tab.h" /* yacc.c:1909  */
+#line 49 "mfcalc.tab.h" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -80,7 +73,7 @@ union YYSTYPE
   symrec* VAR;
   /* FNCT  */
   symrec* FNCT;
-#line 84 "mfcalc.tab.h" /* yacc.c:1909  */
+#line 77 "mfcalc.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
