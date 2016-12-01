@@ -1,5 +1,6 @@
 rm mfcalc.tab.c
-rm mfcalc.out
+rm mfcalc.tab.h
+rm fin.out
 
-bison mfcalc.y
-gcc mfcalc.tab.c -lm -o mfcalc.out
+bison -d mfcalc.y
+gcc mfcalc.tab.c analizadorLexico.c dataStructure.c main.c -lm -o fin.out

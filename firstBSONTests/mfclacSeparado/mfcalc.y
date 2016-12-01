@@ -15,6 +15,7 @@
 %code requires {
   #include "dataStructure.h"
   #include "analizadorLexico.h"
+  void init_table (void);
 }
 
 %define api.value.type union /* Generate YYSTYPE from these types:  */
@@ -73,7 +74,7 @@ struct init const arith_fncts[] =
 };
 
 /* Put arithmetic functions in table.  */
-static void init_table (void)
+void init_table (void)
 {
   int i;
   for (i = 0; arith_fncts[i].fname != 0; i++)
@@ -86,12 +87,4 @@ static void init_table (void)
 /* Called by yyparse on error.  */
 void yyerror (char const *s){
   fprintf (stderr, "%s\n", s);
-}
-
-int main (int argc, char const* argv[]){
-  int i;
-  /* Enable parse traces on option -p.  */
-
-  init_table ();
-  return yyparse ();
 }
