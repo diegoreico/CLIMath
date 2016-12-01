@@ -5,20 +5,26 @@
   #include <stdio.h>  /* For printf, etc. */
   #include <math.h>   /* For pow, used in the grammar.  */
 
-
+  extern int yylex(void);
+  extern void yyterminate();
+  void yyerror(const char *s);
+  extern FILE* yyin;
 %}
 
 %code top{
+
   void yyerror (char const *s);
+
 }
 
 %code requires {
   #include "dataStructure.h"
-  #include "analizadorLexico.h"
   #include "errors.h"
 }
 
 %define api.value.type union /* Generate YYSTYPE from these types:  */
+%token <double>  HELP
+%token <double>  QUIT
 %token <double>  NUM         /* Simple double precision number.  */
 %token <symrec*> VAR FNCT    /* Symbol table pointer: variable and function.  */
 %type  <double>  exp
@@ -37,9 +43,13 @@ input:
 
 line:
   '\n'
-| exp '!' '\n'   { printf ("%.10g\n", $1); }
-| exp '\n'   { ; }
-| error '\n' { yyerrok; }
+| QUIT '\n'       { exit(0);}
+| HELP '\n'       { printf("\n CLIMath v0.1 System Help");
+                    printf("\n==========================");
+                  }
+| exp ';' '\n'    { printf ("%.10g\n", $1); }
+| exp '\n'    { ; }
+| error '\n'      { yyerrok; }
 ;
 
 exp:

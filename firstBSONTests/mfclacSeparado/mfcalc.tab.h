@@ -40,23 +40,24 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 15 "mfcalc.y" /* yacc.c:1909  */
+#line 20 "mfcalc.y" /* yacc.c:1909  */
 
   #include "dataStructure.h"
-  #include "analizadorLexico.h"
   #include "errors.h"
 
-#line 50 "mfcalc.tab.h" /* yacc.c:1909  */
+#line 49 "mfcalc.tab.h" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
   enum yytokentype
   {
-    NUM = 258,
-    VAR = 259,
-    FNCT = 260,
-    NEG = 261
+    HELP = 258,
+    QUIT = 259,
+    NUM = 260,
+    VAR = 261,
+    FNCT = 262,
+    NEG = 263
   };
 #endif
 
@@ -66,6 +67,10 @@ extern int yydebug;
 union YYSTYPE
 {
 
+  /* HELP  */
+  double HELP;
+  /* QUIT  */
+  double QUIT;
   /* NUM  */
   double NUM;
   /* exp  */
@@ -74,7 +79,7 @@ union YYSTYPE
   symrec* VAR;
   /* FNCT  */
   symrec* FNCT;
-#line 78 "mfcalc.tab.h" /* yacc.c:1909  */
+#line 83 "mfcalc.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
