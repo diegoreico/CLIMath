@@ -10,7 +10,8 @@ int main (int argc, char const* argv[]){
   // int i;
   /* Enable parse traces on option -p.  */
   symbolTable = symbolTableCreate();
-  init_table (functions);
-  
+  init_table_functions(functions);
+  init_table_constants(constants);
+
   return yyparse ();
 }

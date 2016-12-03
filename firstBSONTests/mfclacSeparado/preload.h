@@ -4,13 +4,20 @@
 #include <stdlib.h>
 #include <math.h>
 
-struct init{
+struct initFunctions{
   char const *fname;
   double (*fnct) (double);
 };
 
-extern struct init functions[];
+struct initConstants{
+  char const *name;
+  double constant;
+};
 
-void init_table (struct init* arith_fncts);
+extern struct initFunctions functions[];
+extern struct initConstants constants[];
+
+void init_table_functions (struct initFunctions* arith_fncts);
+void init_table_constants (struct initConstants* arith_fncts);
 
 #endif

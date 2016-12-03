@@ -18,8 +18,8 @@ intérprete de comando para introducir expresiones matematicas
 				-utilizar fichero como argumento al invocar la consola
 				x durate la ejecución de la linea de comandos permitir utilizar un comando que realice la carga de un fichero.(Todo o contexto queda como esta e se lle añade ao contexto o contenido do archivo)
 
-	- gestion de variables mediante a tabla de símbolos
-			-lexema,componenteLexico,valor
+	x gestion de variables mediante a tabla de símbolos
+			xlexema,componenteLexico,valor
 
 	- comando para permitir imprimir tabla de simbolos con identificadores e valores actuales
 

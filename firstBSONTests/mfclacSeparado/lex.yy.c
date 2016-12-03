@@ -378,8 +378,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 27
-#define YY_END_OF_BUFFER 28
+#define YY_NUM_RULES 30
+#define YY_END_OF_BUFFER 31
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -387,12 +387,13 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static yyconst flex_int16_t yy_accept[41] =
+static yyconst flex_int16_t yy_accept[44] =
     {   0,
-        0,    0,   28,   26,    7,    8,   21,   13,   14,   24,
-       12,   20,   11,   10,    9,    4,   26,   22,   23,   19,
-        6,   15,   16,   25,   17,   18,    0,    4,    0,    2,
-        0,    1,    6,    6,    5,    0,    0,    5,    3,    0
+        0,    0,   31,   29,   10,   11,   24,   16,   17,   27,
+       15,   23,   14,   13,   12,    7,   29,   25,   26,   22,
+        9,   18,   19,   28,   20,   21,    0,    7,    0,    5,
+        1,    2,    0,    4,    3,    9,    9,    8,    0,    0,
+        8,    6,    0
     } ;
 
 static yyconst YY_CHAR yy_ec[256] =
@@ -406,11 +407,11 @@ static yyconst YY_CHAR yy_ec[256] =
        17,    1,   18,    1,   19,   19,   19,   19,   19,   19,
        19,   19,   19,   19,   19,   19,   19,   19,   19,   19,
        19,   19,   19,   19,   19,   19,   19,   19,   19,   19,
-       20,    1,   21,   22,   23,    1,   19,   19,   19,   19,
+       20,    1,   21,   22,   23,    1,   19,   19,   24,   19,
 
-       24,   19,   19,   19,   19,   19,   19,   25,   19,   19,
-       19,   19,   26,   19,   19,   19,   19,   19,   19,   19,
-       19,   19,   27,    1,   28,    1,    1,    1,    1,    1,
+       25,   26,   19,   19,   19,   19,   19,   27,   19,   19,
+       19,   19,   28,   19,   19,   19,   19,   29,   19,   19,
+       19,   19,   30,    1,   31,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -427,55 +428,60 @@ static yyconst YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static yyconst YY_CHAR yy_meta[30] =
+static yyconst YY_CHAR yy_meta[33] =
     {   0,
         1,    1,    2,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    3,    1,    1,    1,    1,    3,    1,
-        1,    1,    3,    3,    3,    3,    1,    1,    2
+        1,    1,    3,    3,    3,    3,    3,    3,    3,    1,
+        1,    2
     } ;
 
-static yyconst flex_uint16_t yy_base[44] =
+static yyconst flex_uint16_t yy_base[47] =
     {   0,
-        0,    0,   53,   54,   54,   54,   54,   54,   54,   54,
-       54,   54,   54,   54,   54,   18,   13,   54,   54,   54,
-       38,   54,   54,   54,   54,   54,   37,   21,   25,   54,
-       45,   54,    0,   32,   23,   30,    0,   29,    0,   54,
-       38,   37,   47
+        0,    0,   52,   62,   62,   62,   62,   62,   62,   62,
+       62,   62,   62,   62,   62,   21,   29,   62,   62,   62,
+       37,   62,   62,   62,   62,   62,   36,   24,   28,   62,
+       62,   62,   44,   62,   62,    0,   30,   20,   29,    0,
+       28,    0,   62,   38,   37,   58
     } ;
 
-static yyconst flex_int16_t yy_def[44] =
+static yyconst flex_int16_t yy_def[47] =
     {   0,
-       40,    1,   40,   40,   40,   40,   40,   40,   40,   40,
-       40,   40,   40,   40,   40,   40,   40,   40,   40,   40,
-       41,   40,   40,   40,   40,   40,   40,   40,   40,   40,
-       40,   40,   42,   41,   40,   40,   43,   40,   43,    0,
-       40,   40,   40
+       43,    1,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       44,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43,   45,   44,   43,   43,   46,
+       43,   46,    0,   43,   43,   43
     } ;
 
-static yyconst flex_uint16_t yy_nxt[84] =
+static yyconst flex_uint16_t yy_nxt[95] =
     {   0,
         4,    5,    6,    5,    7,    8,    9,   10,   11,   12,
        13,   14,   15,   16,   17,   18,   19,   20,   21,   22,
-       23,   24,   21,   21,   21,   21,   25,   26,    4,   27,
-       30,   28,   27,   36,   28,   36,   35,   31,   32,   33,
-       34,   29,   38,   38,   29,   33,   29,   39,   37,   39,
-       35,   33,   40,    3,   40,   40,   40,   40,   40,   40,
-       40,   40,   40,   40,   40,   40,   40,   40,   40,   40,
-       40,   40,   40,   40,   40,   40,   40,   40,   40,   40,
-       40,   40,   40
+       23,   24,   21,   21,   21,   21,   21,   21,   21,   25,
+       26,    4,   27,   38,   28,   27,   39,   28,   39,   36,
+       37,   41,   41,   36,   29,   29,   30,   40,   29,   38,
+       36,   43,   31,   43,   32,   33,   34,   35,   42,   43,
+       42,    3,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43
+
     } ;
 
-static yyconst flex_int16_t yy_chk[84] =
+static yyconst flex_int16_t yy_chk[95] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,   16,
-       17,   16,   28,   29,   28,   29,   35,   17,   17,   42,
-       41,   16,   38,   36,   28,   34,   35,   43,   31,   43,
-       27,   21,    3,   40,   40,   40,   40,   40,   40,   40,
-       40,   40,   40,   40,   40,   40,   40,   40,   40,   40,
-       40,   40,   40,   40,   40,   40,   40,   40,   40,   40,
-       40,   40,   40
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,   16,   38,   16,   28,   29,   28,   29,   45,
+       44,   41,   39,   37,   38,   16,   17,   33,   28,   27,
+       21,    3,   17,    0,   17,   17,   17,   17,   46,    0,
+       46,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43,   43,   43,   43,   43,   43,   43,
+       43,   43,   43,   43
+
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -505,7 +511,7 @@ YY_BUFFER_STATE buffer;
 /*=========*/
 /* ESTADOS */
 /*=========*/
-#line 509 "lex.yy.c"
+#line 515 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -723,9 +729,9 @@ YY_DECL
 		}
 
 	{
-#line 32 "lexicalAnalyzer.l"
+#line 35 "lexicalAnalyzer.l"
 
-#line 729 "lex.yy.c"
+#line 735 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -752,13 +758,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 41 )
+				if ( yy_current_state >= 44 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 54 );
+		while ( yy_base[yy_current_state] != 62 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -783,7 +789,7 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case YY_STATE_EOF(INITIAL):
-#line 33 "lexicalAnalyzer.l"
+#line 36 "lexicalAnalyzer.l"
 { yy_delete_buffer(YY_CURRENT_BUFFER );
                     yy_switch_to_buffer(buffer);
 
@@ -791,17 +797,32 @@ case YY_STATE_EOF(INITIAL):
 	YY_BREAK
 case 1:
 YY_RULE_SETUP
-#line 37 "lexicalAnalyzer.l"
-return QUIT;
+#line 40 "lexicalAnalyzer.l"
+return SHOW_CONSTANTS;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 38 "lexicalAnalyzer.l"
-return HELP;
+#line 41 "lexicalAnalyzer.l"
+return SHOW_FUNCTIONS;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 39 "lexicalAnalyzer.l"
+#line 42 "lexicalAnalyzer.l"
+return SHOW_VARIABLES;
+	YY_BREAK
+case 4:
+YY_RULE_SETUP
+#line 43 "lexicalAnalyzer.l"
+return QUIT;
+	YY_BREAK
+case 5:
+YY_RULE_SETUP
+#line 44 "lexicalAnalyzer.l"
+return HELP;
+	YY_BREAK
+case 6:
+YY_RULE_SETUP
+#line 45 "lexicalAnalyzer.l"
 { buffer = YY_CURRENT_BUFFER;
                     yyin = fopen(&yytext[3],"r");
 
@@ -812,19 +833,19 @@ YY_RULE_SETUP
                     return '\n';
                   }
 	YY_BREAK
-case 4:
+case 7:
 YY_RULE_SETUP
-#line 49 "lexicalAnalyzer.l"
+#line 55 "lexicalAnalyzer.l"
 {yylval.NUM = atof(yytext); return NUM;}
 	YY_BREAK
-case 5:
+case 8:
 YY_RULE_SETUP
-#line 50 "lexicalAnalyzer.l"
+#line 56 "lexicalAnalyzer.l"
 {yylval.NUM = atof(yytext); return NUM;}
 	YY_BREAK
-case 6:
+case 9:
 YY_RULE_SETUP
-#line 51 "lexicalAnalyzer.l"
+#line 57 "lexicalAnalyzer.l"
 {
                     symrec *s;
                     s = symbolTableAnalyze(symbolTable,yytext);
@@ -836,65 +857,65 @@ YY_RULE_SETUP
 
                     return VAR;}
 	YY_BREAK
-case 7:
+case 10:
 YY_RULE_SETUP
-#line 61 "lexicalAnalyzer.l"
+#line 67 "lexicalAnalyzer.l"
 /* NOTHING */
 	YY_BREAK
-case 8:
-/* rule 8 can match eol */
+case 11:
+/* rule 11 can match eol */
 YY_RULE_SETUP
-#line 62 "lexicalAnalyzer.l"
+#line 68 "lexicalAnalyzer.l"
 {numeroLineas++; return yytext[0];}
 	YY_BREAK
-case 9:
-#line 64 "lexicalAnalyzer.l"
-case 10:
-#line 65 "lexicalAnalyzer.l"
-case 11:
-#line 66 "lexicalAnalyzer.l"
 case 12:
-#line 67 "lexicalAnalyzer.l"
-case 13:
-#line 68 "lexicalAnalyzer.l"
-case 14:
-#line 69 "lexicalAnalyzer.l"
-case 15:
 #line 70 "lexicalAnalyzer.l"
-case 16:
+case 13:
 #line 71 "lexicalAnalyzer.l"
-case 17:
+case 14:
 #line 72 "lexicalAnalyzer.l"
-case 18:
+case 15:
 #line 73 "lexicalAnalyzer.l"
-case 19:
+case 16:
 #line 74 "lexicalAnalyzer.l"
-case 20:
+case 17:
 #line 75 "lexicalAnalyzer.l"
-case 21:
+case 18:
 #line 76 "lexicalAnalyzer.l"
-case 22:
+case 19:
 #line 77 "lexicalAnalyzer.l"
-case 23:
+case 20:
 #line 78 "lexicalAnalyzer.l"
+case 21:
+#line 79 "lexicalAnalyzer.l"
+case 22:
+#line 80 "lexicalAnalyzer.l"
+case 23:
+#line 81 "lexicalAnalyzer.l"
 case 24:
-#line 79 "lexicalAnalyzer.l"
+#line 82 "lexicalAnalyzer.l"
 case 25:
+#line 83 "lexicalAnalyzer.l"
+case 26:
+#line 84 "lexicalAnalyzer.l"
+case 27:
+#line 85 "lexicalAnalyzer.l"
+case 28:
 YY_RULE_SETUP
-#line 79 "lexicalAnalyzer.l"
+#line 85 "lexicalAnalyzer.l"
 return yytext[0];
 	YY_BREAK
-case 26:
+case 29:
 YY_RULE_SETUP
-#line 81 "lexicalAnalyzer.l"
+#line 87 "lexicalAnalyzer.l"
 /* IGNORES ALL*/
 	YY_BREAK
-case 27:
+case 30:
 YY_RULE_SETUP
-#line 83 "lexicalAnalyzer.l"
+#line 89 "lexicalAnalyzer.l"
 ECHO;
 	YY_BREAK
-#line 898 "lex.yy.c"
+#line 919 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1176,7 +1197,7 @@ static int yy_get_next_buffer (void)
 
 	for ( yy_cp = (yytext_ptr) + YY_MORE_ADJ; yy_cp < (yy_c_buf_p); ++yy_cp )
 		{
-		YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 29);
+		YY_CHAR yy_c = (*yy_cp ? yy_ec[YY_SC_TO_UI(*yy_cp)] : 32);
 		if ( yy_accept[yy_current_state] )
 			{
 			(yy_last_accepting_state) = yy_current_state;
@@ -1185,7 +1206,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 41 )
+			if ( yy_current_state >= 44 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1204,7 +1225,7 @@ static int yy_get_next_buffer (void)
 	int yy_is_jam;
     	char *yy_cp = (yy_c_buf_p);
 
-	YY_CHAR yy_c = 29;
+	YY_CHAR yy_c = 32;
 	if ( yy_accept[yy_current_state] )
 		{
 		(yy_last_accepting_state) = yy_current_state;
@@ -1213,11 +1234,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 41 )
+		if ( yy_current_state >= 44 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 40);
+	yy_is_jam = (yy_current_state == 43);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1893,7 +1914,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 83 "lexicalAnalyzer.l"
+#line 89 "lexicalAnalyzer.l"
 
 
 

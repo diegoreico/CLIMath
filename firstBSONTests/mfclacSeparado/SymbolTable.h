@@ -55,4 +55,5 @@ void symbolTableDestroy(SymbolTable *);
 symrec* symbolTableAnalyze(SymbolTable *, char const *);
 symrec* symbolTableInsert(SymbolTable *, char const *, int);//just for the load of keywords
 void symbolTablePrint(SymbolTable *);
+void symbolTablePrintType(SymbolTable *,int);
 #endif //ANALIZADORLEXICO_HASHTABLE_H

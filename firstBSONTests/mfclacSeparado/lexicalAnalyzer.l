@@ -23,6 +23,9 @@ Float				{Digit}+(\.{Digit}+)?(e[+-]{Digit}+){0,1}
 
 Help        \:\?
 Quit        \:q
+ShowVariables \:v
+ShowFunctions \:f
+ShowConstants \:c
 Load        \:l[ ][^\0\n]+
 
 /*=========*/
@@ -34,6 +37,9 @@ Load        \:l[ ][^\0\n]+
                     yy_switch_to_buffer(buffer);
 
                     return END_OF_FILE;}
+{ShowConstants}   return SHOW_CONSTANTS;
+{ShowFunctions}   return SHOW_FUNCTIONS;
+{ShowVariables}   return SHOW_VARIABLES;
 {Quit}            return QUIT;
 {Help}            return HELP;
 {Load}            { buffer = YY_CURRENT_BUFFER;

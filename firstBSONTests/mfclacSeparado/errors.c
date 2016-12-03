@@ -10,10 +10,21 @@ void showError(enum errors code, int line){
       printf("\033[0;31m");
 
   switch(code){
-    case ERROR_UNEXPECTED_WTF:
-        printf("WTF, AN UNEXPECTED ERROR APPEARRED");
-      break;
-
+      case ERROR_NOT_INITIALICED_VARIABLE:
+        printf("you can't use a not initialiced variable.");
+        break;
+      case ERROR_OVERWITE:
+        printf("you can only overwrite varaibles.");
+        break;
+      case ERROR_MISSMATCHING_BACKETS:
+        printf("miss matching brackets,");
+        break;
+      case ERROR_WRONG_OPERATOR:
+        printf("wrong operator.");
+        break;
+      case ERROR_DIVISION_BY_ZERO:
+        printf("you can't divide by zero.");
+        break;
       default:
           printf("Unknown Error");
   }

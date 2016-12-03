@@ -1,7 +1,7 @@
 
 #include "SymbolTable.h"
 #include <string.h>
-
+#include "mfcalc.tab.h"
 //creates a register
 symrec* createRegister(char const * element,int type){
     symrec* registe = (symrec*) malloc(sizeof(symrec));
@@ -287,6 +287,14 @@ void symbolTableDelete(SymbolTable *symbolTable, char const * element){
     deleteElement(&symbolTable[hash(element)], element);
 }
 
+void printTreeElement(SymbolTable* symbolTable){
+  printf("\t%s",symbolTable->registe->name);
+  if(symbolTable->registe->type != FNCT)
+    printf(" - \t%f",symbolTable->registe->value.var);
+  // printf(" - %d",symbolTable->registe->type);
+
+  printf("\n");
+}
 //prints the tree of a bucket of the symbol table / hash table
 void printTree(SymbolTable* symbolTable){
 
@@ -294,11 +302,21 @@ void printTree(SymbolTable* symbolTable){
         printTree(symbolTable->left);
 
     if(symbolTable->hasRegister){
-        printf("\t%s",symbolTable->registe->name);
+        printTreeElement(symbolTable);
+    }
 
-        // printf(" - %d",symbolTable->registe->type);
+    if(symbolTable->hashRight)
+        printTree(symbolTable->right);
 
-        printf("\n");
+}
+
+void printTreeByType(SymbolTable* symbolTable,int type){
+
+    if(symbolTable->hasLeft)
+        printTree(symbolTable->left);
+
+    if(symbolTable->hasRegister && symbolTable->registe->type == type){
+        printTreeElement(symbolTable);
     }
 
     if(symbolTable->hashRight)
@@ -307,19 +325,19 @@ void printTree(SymbolTable* symbolTable){
 }
 
 void symbolTablePrint(SymbolTable *symbolTable){
-
-
-    printf("SYMBOL TABLE\n");
-    printf("==========\n");
+    // printf("SYMBOL TABLE\n");
+    // printf("==========\n");
     for (int i = 0; i < SYMBOL_TABLE_DEFAULT_SIZE; ++i) {
-        printf("BUCKET %d\n",i);
-        printf("==========\n");
+        // printf("BUCKET %d\n",i);
+        // printf("==========\n");
         printTree(&symbolTable[i]);
-        printf("\n");
+        // printf("\n");
     }
+}
 
-
-
+void symbolTablePrintType(SymbolTable *symbolTable,int type){
+  for (int i = 0; i < SYMBOL_TABLE_DEFAULT_SIZE; ++i)
+      printTreeByType(&symbolTable[i],type);
 }
 
 //checks if a element exists int he symbol table. If the element doesn't exist,
@@ -329,7 +347,7 @@ symrec* symbolTableAnalyze(SymbolTable *symbolTable, char const *element){
     symrec* registe = symbolTableGet(symbolTable, element);
 
     if ( registe == NULL){
-        return symbolTableInsert(symbolTable, element, 10);
+        return symbolTableInsert(symbolTable, element, VAR);
     }else{
         return registe;
     }

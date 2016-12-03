@@ -24,6 +24,9 @@
 
 %define api.value.type union /* Generate YYSTYPE from these types:  */
 %token <int>     END_OF_FILE
+%token <double>  SHOW_CONSTANTS
+%token <double>  SHOW_FUNCTIONS
+%token <double>  SHOW_VARIABLES
 %token <double>  HELP
 %token <double>  QUIT
 %token <double>  NUM         /* Simple double precision number.  */
@@ -46,13 +49,24 @@ line:
   '\n'
 | END_OF_FILE
 | QUIT '\n'       { exit(0);}
+| SHOW_CONSTANTS '\n'{printf("Available Constants\n");
+                    printf("=========================\n");
+                    symbolTablePrintType(symbolTable,-1);}
+| SHOW_FUNCTIONS '\n'{printf("Available Functions\n");
+                    printf("=========================\n");
+                    symbolTablePrintType(symbolTable,FNCT);}
+| SHOW_VARIABLES '\n'{printf("Current Workspace\n");
+                    printf("=========================\n");
+                    symbolTablePrintType(symbolTable,VAR);}
 | HELP '\n'       { printf("\n CLIMath v0.1 System Help");
                     printf("\n===============================");
-                    printf("\nOpciones disponibles:");
-                    printf("\n:h --> Acceder a la ayuda.");
-                    printf("\n:l --> Permite cargar archivos.");
-                    printf("\n\t :l rutaDelArchivo");
-                    printf("\n:q --> Salir de la aplicación.");
+                    printf("\nAvailable options:");
+                    printf("\n:h --> Shows help menu.");
+                    printf("\n:f --> Shows availble functions.");
+                    printf("\n:v --> Shows variables.");
+                    printf("\n:l --> Load scritp.");
+                    printf("\n\t :l pathToFile");
+                    printf("\n:q --> Quit.");
                     printf("\n");
                   }
 | exp ';' '\n'    { printf ("%.10g\n", $1); }
