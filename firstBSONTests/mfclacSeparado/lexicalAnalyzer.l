@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "mfcalc.tab.h"
-#include "dataStructure.h"
+#include "SymbolTable.h"
 
 int numeroLineas=0;
 YY_BUFFER_STATE buffer;
@@ -50,10 +50,10 @@ Load        \:l[ ][^\0\n]+
 {Float}						{yylval.NUM = atof(yytext); return NUM;}
 {Identifier}			{
                     symrec *s;
-                    s = getsym (yytext);
+                    s = symbolTableAnalyze(symbolTable,yytext);
 
                     if (s == 0)
-                      s = putsym (yytext, VAR);
+                      s = symbolTableInsert(symbolTable,yytext, VAR);
 
                     *((symrec**) &yylval) = s;
 

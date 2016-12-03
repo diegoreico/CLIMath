@@ -18,7 +18,7 @@
 }
 
 %code requires {
-  #include "dataStructure.h"
+  #include "SymbolTable.h"
   #include "errors.h"
 }
 

@@ -9,7 +9,8 @@ int main (int argc, char const* argv[]){
   yyout = stdout;
   // int i;
   /* Enable parse traces on option -p.  */
-
+  symbolTable = symbolTableCreate();
   init_table (functions);
+  
   return yyparse ();
 }

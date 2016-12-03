@@ -498,7 +498,7 @@ char *yytext;
 #include <stdio.h>
 #include <string.h>
 #include "mfcalc.tab.h"
-#include "dataStructure.h"
+#include "SymbolTable.h"
 
 int numeroLineas=0;
 YY_BUFFER_STATE buffer;
@@ -827,10 +827,10 @@ YY_RULE_SETUP
 #line 51 "lexicalAnalyzer.l"
 {
                     symrec *s;
-                    s = getsym (yytext);
+                    s = symbolTableAnalyze(symbolTable,yytext);
 
                     if (s == 0)
-                      s = putsym (yytext, VAR);
+                      s = symbolTableInsert(symbolTable,yytext, VAR);
 
                     *((symrec**) &yylval) = s;
 

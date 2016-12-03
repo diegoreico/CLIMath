@@ -115,7 +115,7 @@ extern int yydebug;
 /* "%code requires" blocks.  */
 #line 20 "mfcalc.y" /* yacc.c:355  */
 
-  #include "dataStructure.h"
+  #include "SymbolTable.h"
   #include "errors.h"
 
 #line 122 "mfcalc.tab.c" /* yacc.c:355  */
