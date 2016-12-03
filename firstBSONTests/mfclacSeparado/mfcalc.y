@@ -23,6 +23,7 @@
 }
 
 %define api.value.type union /* Generate YYSTYPE from these types:  */
+%token <int>     END_OF_FILE
 %token <double>  HELP
 %token <double>  QUIT
 %token <double>  NUM         /* Simple double precision number.  */
@@ -43,12 +44,16 @@ input:
 
 line:
   '\n'
+| END_OF_FILE
 | QUIT '\n'       { exit(0);}
 | HELP '\n'       { printf("\n CLIMath v0.1 System Help");
                     printf("\n===============================");
                     printf("\nOpciones disponibles:");
                     printf("\n:h --> Acceder a la ayuda.");
+                    printf("\n:l --> Permite cargar archivos.");
+                    printf("\n\t :l rutaDelArchivo");
                     printf("\n:q --> Salir de la aplicación.");
+                    printf("\n");
                   }
 | exp ';' '\n'    { printf ("%.10g\n", $1); }
 | exp '\n'    { ; }
@@ -73,6 +78,7 @@ exp:
 
 /* Called by yyparse on error.  */
 void yyerror (char const *s){
-  fprintf (stderr, "%s\n", s);
+  /*fprintf (stderr, "%s\n", s);
+  fprintf (stderr, "%s\n", s);*/
   showError(ERROR_UNEXPECTED_WTF,-1);
 }

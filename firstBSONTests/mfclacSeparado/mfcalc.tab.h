@@ -52,12 +52,13 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    HELP = 258,
-    QUIT = 259,
-    NUM = 260,
-    VAR = 261,
-    FNCT = 262,
-    NEG = 263
+    END_OF_FILE = 258,
+    HELP = 259,
+    QUIT = 260,
+    NUM = 261,
+    VAR = 262,
+    FNCT = 263,
+    NEG = 264
   };
 #endif
 
@@ -75,11 +76,13 @@ union YYSTYPE
   double NUM;
   /* exp  */
   double exp;
+  /* END_OF_FILE  */
+  int END_OF_FILE;
   /* VAR  */
   symrec* VAR;
   /* FNCT  */
   symrec* FNCT;
-#line 83 "mfcalc.tab.h" /* yacc.c:1909  */
+#line 86 "mfcalc.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
