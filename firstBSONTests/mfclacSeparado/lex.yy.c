@@ -507,11 +507,12 @@ char *yytext;
 #include "SymbolTable.h"
 
 int numeroLineas=0;
+
 YY_BUFFER_STATE buffer;
 /*=========*/
 /* ESTADOS */
 /*=========*/
-#line 515 "lex.yy.c"
+#line 516 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -729,9 +730,9 @@ YY_DECL
 		}
 
 	{
-#line 35 "lexicalAnalyzer.l"
+#line 36 "lexicalAnalyzer.l"
 
-#line 735 "lex.yy.c"
+#line 736 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -789,7 +790,7 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case YY_STATE_EOF(INITIAL):
-#line 36 "lexicalAnalyzer.l"
+#line 37 "lexicalAnalyzer.l"
 { yy_delete_buffer(YY_CURRENT_BUFFER );
                     yy_switch_to_buffer(buffer);
 
@@ -797,61 +798,69 @@ case YY_STATE_EOF(INITIAL):
 	YY_BREAK
 case 1:
 YY_RULE_SETUP
-#line 40 "lexicalAnalyzer.l"
+#line 41 "lexicalAnalyzer.l"
 return SHOW_CONSTANTS;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 41 "lexicalAnalyzer.l"
+#line 42 "lexicalAnalyzer.l"
 return SHOW_FUNCTIONS;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 42 "lexicalAnalyzer.l"
+#line 43 "lexicalAnalyzer.l"
 return SHOW_VARIABLES;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 43 "lexicalAnalyzer.l"
+#line 44 "lexicalAnalyzer.l"
 return QUIT;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 44 "lexicalAnalyzer.l"
+#line 45 "lexicalAnalyzer.l"
 return HELP;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 45 "lexicalAnalyzer.l"
+#line 46 "lexicalAnalyzer.l"
 { buffer = YY_CURRENT_BUFFER;
-                    yyin = fopen(&yytext[3],"r");
+                     FILE* file= fopen(&yytext[3],"r");
 
-                    yy_switch_to_buffer(yy_create_buffer(yyin,YY_BUF_SIZE ) );
+                    if(file != NULL){
+                      yyin = file;
+                      yy_switch_to_buffer(yy_create_buffer(yyin,YY_BUF_SIZE ) );
 
-                    BEGIN(INITIAL);
+                      BEGIN(INITIAL);
+                    }else{
+                      showError(ERROR_FILE_NOT_EXISTS,-1);
+                    }
 
                     return '\n';
                   }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 55 "lexicalAnalyzer.l"
+#line 61 "lexicalAnalyzer.l"
 {yylval.NUM = atof(yytext); return NUM;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 56 "lexicalAnalyzer.l"
+#line 62 "lexicalAnalyzer.l"
 {yylval.NUM = atof(yytext); return NUM;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 57 "lexicalAnalyzer.l"
+#line 63 "lexicalAnalyzer.l"
 {
                     symrec *s;
                     s = symbolTableAnalyze(symbolTable,yytext);
 
-                    if (s == 0)
+                    if (s == 0){
                       s = symbolTableInsert(symbolTable,yytext, VAR);
+                    }else{
+
+                    }
 
                     *((symrec**) &yylval) = s;
 
@@ -859,63 +868,63 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 67 "lexicalAnalyzer.l"
+#line 76 "lexicalAnalyzer.l"
 /* NOTHING */
 	YY_BREAK
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 68 "lexicalAnalyzer.l"
+#line 77 "lexicalAnalyzer.l"
 {numeroLineas++; return yytext[0];}
 	YY_BREAK
 case 12:
-#line 70 "lexicalAnalyzer.l"
-case 13:
-#line 71 "lexicalAnalyzer.l"
-case 14:
-#line 72 "lexicalAnalyzer.l"
-case 15:
-#line 73 "lexicalAnalyzer.l"
-case 16:
-#line 74 "lexicalAnalyzer.l"
-case 17:
-#line 75 "lexicalAnalyzer.l"
-case 18:
-#line 76 "lexicalAnalyzer.l"
-case 19:
-#line 77 "lexicalAnalyzer.l"
-case 20:
-#line 78 "lexicalAnalyzer.l"
-case 21:
 #line 79 "lexicalAnalyzer.l"
-case 22:
+case 13:
 #line 80 "lexicalAnalyzer.l"
-case 23:
+case 14:
 #line 81 "lexicalAnalyzer.l"
-case 24:
+case 15:
 #line 82 "lexicalAnalyzer.l"
-case 25:
+case 16:
 #line 83 "lexicalAnalyzer.l"
-case 26:
+case 17:
 #line 84 "lexicalAnalyzer.l"
-case 27:
+case 18:
 #line 85 "lexicalAnalyzer.l"
+case 19:
+#line 86 "lexicalAnalyzer.l"
+case 20:
+#line 87 "lexicalAnalyzer.l"
+case 21:
+#line 88 "lexicalAnalyzer.l"
+case 22:
+#line 89 "lexicalAnalyzer.l"
+case 23:
+#line 90 "lexicalAnalyzer.l"
+case 24:
+#line 91 "lexicalAnalyzer.l"
+case 25:
+#line 92 "lexicalAnalyzer.l"
+case 26:
+#line 93 "lexicalAnalyzer.l"
+case 27:
+#line 94 "lexicalAnalyzer.l"
 case 28:
 YY_RULE_SETUP
-#line 85 "lexicalAnalyzer.l"
+#line 94 "lexicalAnalyzer.l"
 return yytext[0];
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 87 "lexicalAnalyzer.l"
+#line 96 "lexicalAnalyzer.l"
 /* IGNORES ALL*/
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 89 "lexicalAnalyzer.l"
+#line 98 "lexicalAnalyzer.l"
 ECHO;
 	YY_BREAK
-#line 919 "lex.yy.c"
+#line 928 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1914,7 +1923,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 89 "lexicalAnalyzer.l"
+#line 98 "lexicalAnalyzer.l"
 
 
 

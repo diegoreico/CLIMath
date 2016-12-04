@@ -10,7 +10,7 @@
 /* Function type.  */
 typedef double (*func_t) (double);
 
-#define SYMBOL_TABLE_DEFAULT_SIZE 149
+#define SYMBOL_TABLE_DEFAULT_SIZE 49
 
 struct symrec{
   char *name;  /* name of symbol */

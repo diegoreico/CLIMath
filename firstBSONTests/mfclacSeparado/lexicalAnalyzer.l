@@ -6,6 +6,7 @@
 #include "SymbolTable.h"
 
 int numeroLineas=0;
+
 YY_BUFFER_STATE buffer;
 %}
 
@@ -43,12 +44,17 @@ Load        \:l[ ][^\0\n]+
 {Quit}            return QUIT;
 {Help}            return HELP;
 {Load}            { buffer = YY_CURRENT_BUFFER;
-                    yyin = fopen(&yytext[3],"r");
+                     FILE* file= fopen(&yytext[3],"r");
 
-                    yy_switch_to_buffer(
-                        yy_create_buffer( yyin, YY_BUF_SIZE ) );
+                    if(file != NULL){
+                      yyin = file;
+                      yy_switch_to_buffer(
+                          yy_create_buffer( yyin, YY_BUF_SIZE ) );
 
-                    BEGIN(INITIAL);
+                      BEGIN(INITIAL);
+                    }else{
+                      showError(ERROR_FILE_NOT_EXISTS,-1);
+                    }
 
                     return '\n';
                   }
@@ -58,8 +64,9 @@ Load        \:l[ ][^\0\n]+
                     symrec *s;
                     s = symbolTableAnalyze(symbolTable,yytext);
 
-                    if (s == 0)
+                    if (s == 0){
                       s = symbolTableInsert(symbolTable,yytext, VAR);
+                    }
 
                     *((symrec**) &yylval) = s;
 

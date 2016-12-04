@@ -105,7 +105,7 @@ int hash(char const * element){
 
     while(element[current]){
         /* D. J. Bernstein hash function */
-        hash = (33 * hash ^ element[current])% SYMBOL_TABLE_DEFAULT_SIZE;
+        hash = (33 * hash ^ element[current])% (SYMBOL_TABLE_DEFAULT_SIZE - 1);
 
         current++;
     }
@@ -347,7 +347,8 @@ symrec* symbolTableAnalyze(SymbolTable *symbolTable, char const *element){
     symrec* registe = symbolTableGet(symbolTable, element);
 
     if ( registe == NULL){
-        return symbolTableInsert(symbolTable, element, VAR);
+        // return symbolTableInsert(symbolTable, element, VAR);
+        return NULL;
     }else{
         return registe;
     }

@@ -61,7 +61,7 @@ line:
 | HELP '\n'       { printf("\n CLIMath v0.1 System Help");
                     printf("\n===============================");
                     printf("\nAvailable options:");
-                    printf("\n:h --> Shows help menu.");
+                    printf("\n:? --> Shows help menu.");
                     printf("\n:f --> Shows availble functions.");
                     printf("\n:v --> Shows variables.");
                     printf("\n:l --> Load scritp.");
@@ -76,13 +76,34 @@ line:
 
 exp:
   NUM                { $$ = $1;                         }
-| VAR                { $$ = $1->value.var;              }
-| VAR '=' exp        { $$ = $3; $1->value.var = $3;     }
-| VAR '(' exp ')'    { $$ = (*($1->value.fnctptr))($3); }
+| VAR                { if($1->type == FNCT){
+                          $$ = 0;
+                          showError(ERROR_VALUE_OF_FUNCTION,-1);
+                       }else{
+                          $$ = $1->value.var;
+                       }
+                      }
+| VAR '=' exp        { if($1->type == VAR){
+                        $$ = $3; $1->value.var = $3;
+                      }else{
+                        showError(ERROR_OVERWITE,-1);
+                        $$ = 0;
+                      }
+                     }
+| VAR '(' exp ')'    {  if($1->type == FNCT)
+                          $$ = (*($1->value.fnctptr))($3);
+                        else{
+                          $$ = 0;
+                          showError(ERROR_NOT_A_FUNCTION,-1);
+                        }
+                      }
 | exp '+' exp        { $$ = $1 + $3;                    }
 | exp '-' exp        { $$ = $1 - $3;                    }
 | exp '*' exp        { $$ = $1 * $3;                    }
-| exp '/' exp        { $$ = $1 / $3;                    }
+| exp '/' exp        { if($3 == 0)
+                        showError(ERROR_DIVISION_BY_ZERO,-1);
+                       else
+                        $$ = $1 / $3;                    }
 | '-' exp  %prec NEG { $$ = -$2;                        }
 | exp '^' exp        { $$ = pow ($1, $3);               }
 | '(' exp ')'        { $$ = $2;                         }
@@ -94,5 +115,5 @@ exp:
 void yyerror (char const *s){
   /*fprintf (stderr, "%s\n", s);
   fprintf (stderr, "%s\n", s);*/
-  showError(ERROR_UNEXPECTED_WTF,-1);
+  /*showError(ERROR_UNEXPECTED_WTF,-1);*/
 }
