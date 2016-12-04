@@ -14,7 +14,7 @@ void showError(enum errors code, int line){
         printf("you can't use a not initialiced variable.");
         break;
       case ERROR_OVERWITE:
-        printf("you can only overwrite varaibles.");
+        printf("you can only overwrite variables.");
         break;
       case ERROR_MISSMATCHING_BRACKETS:
         printf("miss matching brackets,");

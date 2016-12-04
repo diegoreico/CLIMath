@@ -11,6 +11,7 @@ typedef double (*func_t) (double);
 struct symrec{
   char *name;  /* name of symbol */
   int type;    /* type of symbol: either VAR or FNCT */
+  bool initiliced;
   union{
     double var;      /* value of a VAR */
     func_t fnctptr;  /* value of a FNCT */

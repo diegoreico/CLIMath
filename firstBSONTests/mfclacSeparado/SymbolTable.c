@@ -315,7 +315,7 @@ void printTreeByType(SymbolTable* symbolTable,int type){
     if(symbolTable->hasLeft)
         printTree(symbolTable->left);
 
-    if(symbolTable->hasRegister && symbolTable->registe->type == type){
+    if(symbolTable->hasRegister && symbolTable->registe->type == type && symbolTable->registe->initialized){
         printTreeElement(symbolTable);
     }
 

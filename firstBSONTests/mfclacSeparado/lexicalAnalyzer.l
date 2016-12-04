@@ -6,7 +6,6 @@
 #include "SymbolTable.h"
 
 int numeroLineas=0;
-
 YY_BUFFER_STATE buffer;
 %}
 
@@ -66,6 +65,7 @@ Load        \:l[ ][^\0\n]+
 
                     if (s == 0){
                       s = symbolTableInsert(symbolTable,yytext, VAR);
+                      s->initialized = false;
                     }
 
                     *((symrec**) &yylval) = s;

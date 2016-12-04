@@ -328,7 +328,7 @@ extern int yylex (void);
 #undef YY_DECL
 #endif
 
-#line 98 "lexicalAnalyzer.l"
+#line 96 "lexicalAnalyzer.l"
 
 
 #line 335 "lex.yy.h"

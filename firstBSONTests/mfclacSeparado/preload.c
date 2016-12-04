@@ -25,6 +25,7 @@ void init_table_functions (struct initFunctions* arith_fncts)
     {
       symrec *ptr = symbolTableInsert(symbolTable,arith_fncts[i].fname, FNCT);
       ptr->value.fnctptr = arith_fncts[i].fnct;
+      ptr->initialized = true;
     }
 }
 
@@ -35,5 +36,6 @@ void init_table_constants (struct initConstants* arith_fncts)
     {
       symrec *ptr = symbolTableInsert(symbolTable,arith_fncts[i].name, -1);
       ptr->value.var = arith_fncts[i].constant;
+      ptr->initialized = true;
     }
 }

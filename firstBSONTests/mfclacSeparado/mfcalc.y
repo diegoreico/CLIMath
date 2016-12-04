@@ -80,11 +80,14 @@ exp:
                           $$ = 0;
                           showError(ERROR_VALUE_OF_FUNCTION,-1);
                        }else{
-                          $$ = $1->value.var;
+                         if(!$1->initialized)
+                          showError(ERROR_NOT_INITIALICED_VARIABLE,-1);
+                         $$ = $1->value.var;
                        }
                       }
 | VAR '=' exp        { if($1->type == VAR){
                         $$ = $3; $1->value.var = $3;
+                        $1->initialized = true;
                       }else{
                         showError(ERROR_OVERWITE,-1);
                         $$ = 0;
