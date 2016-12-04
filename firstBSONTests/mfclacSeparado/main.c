@@ -15,6 +15,7 @@ int main (int argc, char const* argv[]){
 
   yyparse ();
   fclose(yyin);
+
   symbolTableDestroy(symbolTable);
 
   return 0;

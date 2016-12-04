@@ -1,0 +1,1 @@
+/usr/bin/cc    -std=c11    CMakeFiles/mfclalSeparado.dir/errors.c.o CMakeFiles/mfclalSeparado.dir/lex.yy.c.o CMakeFiles/mfclalSeparado.dir/main.c.o CMakeFiles/mfclalSeparado.dir/mfcalc.tab.c.o CMakeFiles/mfclalSeparado.dir/preload.c.o CMakeFiles/mfclalSeparado.dir/SymbolTable.c.o  -o mfclalSeparado -lm 

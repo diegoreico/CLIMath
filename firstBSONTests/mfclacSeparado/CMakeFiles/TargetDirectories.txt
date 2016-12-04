@@ -1,0 +1,3 @@
+/home/entakitos/repositorios/CLIMath/firstBSONTests/mfclacSeparado/CMakeFiles/rebuild_cache.dir
+/home/entakitos/repositorios/CLIMath/firstBSONTests/mfclacSeparado/CMakeFiles/edit_cache.dir
+/home/entakitos/repositorios/CLIMath/firstBSONTests/mfclacSeparado/CMakeFiles/mfclalSeparado.dir

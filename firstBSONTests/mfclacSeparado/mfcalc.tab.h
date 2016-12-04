@@ -53,15 +53,16 @@ extern int yydebug;
   enum yytokentype
   {
     END_OF_FILE = 258,
-    SHOW_CONSTANTS = 259,
-    SHOW_FUNCTIONS = 260,
-    SHOW_VARIABLES = 261,
-    HELP = 262,
-    QUIT = 263,
-    NUM = 264,
-    VAR = 265,
-    FNCT = 266,
-    NEG = 267
+    RESTART_CONTEXT = 259,
+    SHOW_CONSTANTS = 260,
+    SHOW_FUNCTIONS = 261,
+    SHOW_VARIABLES = 262,
+    HELP = 263,
+    QUIT = 264,
+    NUM = 265,
+    VAR = 266,
+    FNCT = 267,
+    NEG = 268
   };
 #endif
 
@@ -71,27 +72,29 @@ extern int yydebug;
 union YYSTYPE
 {
 
-  /* SHOW_CONSTANTS  */
-  double SHOW_CONSTANTS;
-  /* SHOW_FUNCTIONS  */
-  double SHOW_FUNCTIONS;
-  /* SHOW_VARIABLES  */
-  double SHOW_VARIABLES;
-  /* HELP  */
-  double HELP;
-  /* QUIT  */
-  double QUIT;
   /* NUM  */
   double NUM;
   /* exp  */
   double exp;
   /* END_OF_FILE  */
   int END_OF_FILE;
+  /* RESTART_CONTEXT  */
+  int RESTART_CONTEXT;
+  /* SHOW_CONSTANTS  */
+  int SHOW_CONSTANTS;
+  /* SHOW_FUNCTIONS  */
+  int SHOW_FUNCTIONS;
+  /* SHOW_VARIABLES  */
+  int SHOW_VARIABLES;
+  /* HELP  */
+  int HELP;
+  /* QUIT  */
+  int QUIT;
   /* VAR  */
   symrec* VAR;
   /* FNCT  */
   symrec* FNCT;
-#line 95 "mfcalc.tab.h" /* yacc.c:1909  */
+#line 98 "mfcalc.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

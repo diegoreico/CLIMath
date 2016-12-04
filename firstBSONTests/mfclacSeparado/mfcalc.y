@@ -23,12 +23,13 @@
 }
 
 %define api.value.type union /* Generate YYSTYPE from these types:  */
-%token <int>     END_OF_FILE
-%token <double>  SHOW_CONSTANTS
-%token <double>  SHOW_FUNCTIONS
-%token <double>  SHOW_VARIABLES
-%token <double>  HELP
-%token <double>  QUIT
+%token <int>  END_OF_FILE
+%token <int>  RESTART_CONTEXT
+%token <int>  SHOW_CONSTANTS
+%token <int>  SHOW_FUNCTIONS
+%token <int>  SHOW_VARIABLES
+%token <int>  HELP
+%token <int>  QUIT
 %token <double>  NUM         /* Simple double precision number.  */
 %token <symrec*> VAR FNCT    /* Symbol table pointer: variable and function.  */
 %type  <double>  exp
@@ -48,9 +49,13 @@ input:
 line:
   '\n'
 | END_OF_FILE
-| QUIT '\n'       { 
-                    YYACCEPT;}
-| SHOW_CONSTANTS '\n'{printf("Available Constants\n");
+| QUIT '\n'       { YYACCEPT;}
+| RESTART_CONTEXT '\n' {
+                    symbolTableDestroy(symbolTable);
+                    symbolTable = symbolTableCreate();
+                    }
+| SHOW_CONSTANTS '\n'{
+                    printf("Available Constants\n");
                     printf("=========================\n");
                     symbolTablePrintType(symbolTable,-1);}
 | SHOW_FUNCTIONS '\n'{printf("Available Functions\n");
@@ -67,6 +72,7 @@ line:
                     printf("\n:v --> Shows variables.");
                     printf("\n:l --> Load scritp.");
                     printf("\n\t :l pathToFile");
+                    printf("\n:r --> Resets the current workspace.");
                     printf("\n:q --> Quit.");
                     printf("\n");
                   }

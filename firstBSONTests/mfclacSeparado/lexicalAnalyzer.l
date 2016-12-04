@@ -26,6 +26,7 @@ Quit        \:q
 ShowVariables \:v
 ShowFunctions \:f
 ShowConstants \:c
+RestartContaxt \:r
 Load        \:l[ ][^\0\n]+
 
 /*=========*/
@@ -37,6 +38,7 @@ Load        \:l[ ][^\0\n]+
                     yy_switch_to_buffer(buffer);
 
                     return END_OF_FILE;}
+{RestartContaxt}  return RESTART_CONTEXT;
 {ShowConstants}   return SHOW_CONSTANTS;
 {ShowFunctions}   return SHOW_FUNCTIONS;
 {ShowVariables}   return SHOW_VARIABLES;
