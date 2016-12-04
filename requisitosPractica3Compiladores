@@ -10,25 +10,25 @@ intérprete de comando para introducir expresiones matematicas
 	- seno de unha matriz é o seno de todos os elementos da matrjz
 	x non se fai declarion de tipos
 	x todas as operacions son sobre número reales 1+0.5 = 1.5
-	- se puede trabajar con constantes pi, e ,etc
+	x se puede trabajar con constantes pi, e ,etc
 
-	- como gestionar expresiones
+	x como gestionar expresiones
 			x como interprete de comandos
 			x ejecutando un fichero que contiene una secuencia de expresiones
 				-utilizar fichero como argumento al invocar la consola
 				x durate la ejecución de la linea de comandos permitir utilizar un comando que realice la carga de un fichero.(Todo o contexto queda como esta e se lle añade ao contexto o contenido do archivo)
 
 	x gestion de variables mediante a tabla de símbolos
-			xlexema,componenteLexico,valor
+			x lexema,componenteLexico,valor
 
 	- comando para permitir imprimir tabla de simbolos con identificadores e valores actuales
 
 	- gestión de errores:
-		- utilizar variable que no ha sido inicializada
-		- reasignaciones a una variable
-		- parentesis mal anidados
-		- operadores usados incorrectamente
-		- divisiones entre 0
+		x utilizar variable que no ha sido inicializada
+		x reasignaciones a una variable
+	  -	parentesis mal anidados
+		x operadores usados incorrectamente
+		x divisiones entre 0
 
 	x pode cambiar o valor a unha variable as veces que se queira
 	x ayuda que se le proporciona al usuario

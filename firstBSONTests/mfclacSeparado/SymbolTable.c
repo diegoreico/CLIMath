@@ -289,9 +289,19 @@ void symbolTableDelete(SymbolTable *symbolTable, char const * element){
 
 void printTreeElement(SymbolTable* symbolTable){
   printf("\t%s",symbolTable->registe->name);
-  if(symbolTable->registe->type != FNCT)
+  if(symbolTable->registe->type != FNCT){
     printf(" - \t%f",symbolTable->registe->value.var);
+    if(symbolTable->registe->initialized)
+      if(symbolTable->registe->type == -1)
+        printf(" - \tConstant");
+      else
+        printf(" - \tInitialiced");
+    else
+      printf(" - \tNot Initialized");
   // printf(" - %d",symbolTable->registe->type);
+  }else{
+    printf(" - \tFunction");
+  }
 
   printf("\n");
 }
@@ -303,6 +313,7 @@ void printTree(SymbolTable* symbolTable){
 
     if(symbolTable->hasRegister){
         printTreeElement(symbolTable);
+
     }
 
     if(symbolTable->hashRight)

@@ -57,12 +57,13 @@ extern int yydebug;
     SHOW_CONSTANTS = 260,
     SHOW_FUNCTIONS = 261,
     SHOW_VARIABLES = 262,
-    HELP = 263,
-    QUIT = 264,
-    NUM = 265,
-    VAR = 266,
-    FNCT = 267,
-    NEG = 268
+    SHOW_SYMBOL_TABLE = 263,
+    HELP = 264,
+    QUIT = 265,
+    NUM = 266,
+    VAR = 267,
+    FNCT = 268,
+    NEG = 269
   };
 #endif
 
@@ -86,6 +87,8 @@ union YYSTYPE
   int SHOW_FUNCTIONS;
   /* SHOW_VARIABLES  */
   int SHOW_VARIABLES;
+  /* SHOW_SYMBOL_TABLE  */
+  int SHOW_SYMBOL_TABLE;
   /* HELP  */
   int HELP;
   /* QUIT  */
@@ -94,7 +97,7 @@ union YYSTYPE
   symrec* VAR;
   /* FNCT  */
   symrec* FNCT;
-#line 98 "mfcalc.tab.h" /* yacc.c:1909  */
+#line 101 "mfcalc.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

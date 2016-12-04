@@ -28,6 +28,7 @@
 %token <int>  SHOW_CONSTANTS
 %token <int>  SHOW_FUNCTIONS
 %token <int>  SHOW_VARIABLES
+%token <int>  SHOW_SYMBOL_TABLE
 %token <int>  HELP
 %token <int>  QUIT
 %token <double>  NUM         /* Simple double precision number.  */
@@ -64,12 +65,17 @@ line:
 | SHOW_VARIABLES '\n'{printf("Current Workspace\n");
                     printf("=========================\n");
                     symbolTablePrintType(symbolTable,VAR);}
+| SHOW_SYMBOL_TABLE '\n'{printf("Symbol Table\n");
+                    printf("=========================\n");
+                    symbolTablePrint(symbolTable);
+                  }
 | HELP '\n'       { printf("\n CLIMath v0.1 System Help");
                     printf("\n===============================");
                     printf("\nAvailable options:");
                     printf("\n:? --> Shows help menu.");
                     printf("\n:f --> Shows availble functions.");
                     printf("\n:v --> Shows variables.");
+                    printf("\n:t --> Shows full symbol table.");
                     printf("\n:l --> Load scritp.");
                     printf("\n\t :l pathToFile");
                     printf("\n:r --> Resets the current workspace.");
@@ -123,7 +129,7 @@ exp:
 
 /* Called by yyparse on error.  */
 void yyerror (char const *s){
-  /*fprintf (stderr, "%s\n", s);
-  fprintf (stderr, "%s\n", s);*/
+  /*fprintf (stderr, "%s\n", s);*/
+  fprintf (stderr, "%s\n", s);
   /*showError(ERROR_UNEXPECTED_WTF,-1);*/
 }

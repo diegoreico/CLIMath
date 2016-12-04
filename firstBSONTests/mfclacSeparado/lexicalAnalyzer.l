@@ -27,6 +27,7 @@ ShowVariables \:v
 ShowFunctions \:f
 ShowConstants \:c
 RestartContaxt \:r
+ShowSymbolTable \:t
 Load        \:l[ ][^\0\n]+
 
 /*=========*/
@@ -38,6 +39,7 @@ Load        \:l[ ][^\0\n]+
                     yy_switch_to_buffer(buffer);
 
                     return END_OF_FILE;}
+{ShowSymbolTable} return SHOW_SYMBOL_TABLE;
 {RestartContaxt}  return RESTART_CONTEXT;
 {ShowConstants}   return SHOW_CONSTANTS;
 {ShowFunctions}   return SHOW_FUNCTIONS;
