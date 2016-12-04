@@ -48,7 +48,8 @@ input:
 line:
   '\n'
 | END_OF_FILE
-| QUIT '\n'       { exit(0);}
+| QUIT '\n'       { 
+                    YYACCEPT;}
 | SHOW_CONSTANTS '\n'{printf("Available Constants\n");
                     printf("=========================\n");
                     symbolTablePrintType(symbolTable,-1);}

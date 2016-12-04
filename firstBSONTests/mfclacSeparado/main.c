@@ -13,5 +13,9 @@ int main (int argc, char const* argv[]){
   init_table_functions(functions);
   init_table_constants(constants);
 
-  return yyparse ();
+  yyparse ();
+  fclose(yyin);
+  symbolTableDestroy(symbolTable);
+
+  return 0;
 }
