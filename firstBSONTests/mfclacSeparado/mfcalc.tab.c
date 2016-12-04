@@ -1697,6 +1697,8 @@ yyreturn:
 /* Called by yyparse on error.  */
 void yyerror (char const *s){
   /*fprintf (stderr, "%s\n", s);*/
-  fprintf (stderr, "%s\n", s);
+  printf("\033[0;31m");
+  printf("Syntax error");
+  printf("\033[0m\n");
   /*showError(ERROR_UNEXPECTED_WTF,-1);*/
 }
