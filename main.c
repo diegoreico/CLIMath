@@ -14,7 +14,7 @@ int main (int argc, char const* argv[]){
   init_table_functions(functions);
   init_table_constants(constants);
 
-  printf("\nWelcome! type \":?\" an press \"Enter\" to get the system help");
+  printf("\nWelcome! type \":?\" an press \"Enter\" to get the system help\n");
 
   //starts the syntax analyzer
   yyparse ();
