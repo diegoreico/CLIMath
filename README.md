@@ -4,7 +4,7 @@ Command Line Interface to execute mathematics operations made as an asingment of
 
 Once you are inside the tool, you can type :? to get the system help.
 
-The current version of the too supports:
+The current version of the tool supports:
 
 - basic arithmetic operations +,-,*,/
 - variable declaration
