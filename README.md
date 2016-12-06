@@ -17,7 +17,7 @@ You can add more functions and constants to the tool, if you edit the file **pre
 
 ```
   bash compile.sh
-``
+```
 
 ## Run
 
