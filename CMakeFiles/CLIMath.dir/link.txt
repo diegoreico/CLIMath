@@ -1,1 +1,0 @@
-/usr/bin/cc    -std=c11    CMakeFiles/CLIMath.dir/errors.c.o CMakeFiles/CLIMath.dir/lex.yy.c.o CMakeFiles/CLIMath.dir/main.c.o CMakeFiles/CLIMath.dir/mfcalc.tab.c.o CMakeFiles/CLIMath.dir/preload.c.o CMakeFiles/CLIMath.dir/SymbolTable.c.o  -o CLIMath -lm 

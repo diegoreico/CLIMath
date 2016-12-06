@@ -1,3 +1,0 @@
-/home/entakitos/repositorios/CLIMath/CMakeFiles/edit_cache.dir
-/home/entakitos/repositorios/CLIMath/CMakeFiles/rebuild_cache.dir
-/home/entakitos/repositorios/CLIMath/CMakeFiles/CLIMath.dir
