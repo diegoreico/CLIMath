@@ -11,6 +11,6 @@
       ERROR_FILE_NOT_EXISTS,
       ERROR_VALUE_OF_FUNCTION};
 
-  void showError(enum errors code, int line);
+  void showError(enum errors code);
 
 #endif

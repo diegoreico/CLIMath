@@ -486,8 +486,8 @@ static const yytype_uint8 yytranslate[] =
 static const yytype_uint8 yyrline[] =
 {
        0,    46,    46,    47,    51,    52,    53,    54,    58,    62,
-      65,    68,    72,    85,    86,    87,    91,    92,   101,   109,
-     116,   117,   118,   119,   123,   124,   125
+      66,    70,    75,    93,    94,    95,    99,   100,   112,   121,
+     130,   131,   132,   133,   137,   138,   139
 };
 #endif
 
@@ -1295,7 +1295,7 @@ yyreduce:
 
   case 7:
 #line 54 "mfcalc.y" /* yacc.c:1646  */
-    {
+    { // destroys the sumbol table and creates a new one
                     symbolTableDestroy(symbolTable);
                     symbolTable = symbolTableCreate();
                     }
@@ -1304,7 +1304,7 @@ yyreduce:
 
   case 8:
 #line 58 "mfcalc.y" /* yacc.c:1646  */
-    {
+    { //how availble contants
                     printf("Available Constants\n");
                     printf("=========================\n");
                     symbolTablePrintType(symbolTable,-1);}
@@ -1313,33 +1313,41 @@ yyreduce:
 
   case 9:
 #line 62 "mfcalc.y" /* yacc.c:1646  */
-    {printf("Available Functions\n");
+    { //shows available functions
+                    printf("Available Functions\n");
                     printf("=========================\n");
                     symbolTablePrintType(symbolTable,FNCT);}
-#line 1320 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1321 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 65 "mfcalc.y" /* yacc.c:1646  */
-    {printf("Current Workspace\n");
+#line 66 "mfcalc.y" /* yacc.c:1646  */
+    { //shows available variables
+                    printf("Current Workspace\n");
                     printf("=========================\n");
                     symbolTablePrintType(symbolTable,VAR);}
-#line 1328 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1330 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 68 "mfcalc.y" /* yacc.c:1646  */
-    {printf("Symbol Table\n");
+#line 70 "mfcalc.y" /* yacc.c:1646  */
+    { //shows full symbol table
+                    printf("Symbol Table\n");
                     printf("=========================\n");
                     symbolTablePrint(symbolTable);
                   }
-#line 1337 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1340 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 72 "mfcalc.y" /* yacc.c:1646  */
-    { printf("\n CLIMath v0.1 System Help");
+#line 75 "mfcalc.y" /* yacc.c:1646  */
+    { //shows system help
+                    printf("\n CLIMath v0.1 System Help");
                     printf("\n===============================");
+                    printf("\nWelcome to the first version of this command line interface");
+                    printf("\n");
+                    printf("\nYou can use \";\" at the end of a command to supress the command output");
+                    printf("\n");
                     printf("\nAvailable options:");
                     printf("\n:? --> Shows help menu.");
                     printf("\n:f --> Shows availble functions.");
@@ -1351,119 +1359,124 @@ yyreduce:
                     printf("\n:q --> Quit.");
                     printf("\n");
                   }
-#line 1355 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1363 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 85 "mfcalc.y" /* yacc.c:1646  */
-    { printf ("%.10g\n", (*(double*)(&yyvsp[-2]))); }
-#line 1361 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 93 "mfcalc.y" /* yacc.c:1646  */
+    { ; }
+#line 1369 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 86 "mfcalc.y" /* yacc.c:1646  */
-    { ; }
-#line 1367 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 94 "mfcalc.y" /* yacc.c:1646  */
+    { printf ("%.10g\n", (*(double*)(&yyvsp[-1]))); }
+#line 1375 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 87 "mfcalc.y" /* yacc.c:1646  */
+#line 95 "mfcalc.y" /* yacc.c:1646  */
     { yyerrok; }
-#line 1373 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1381 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 91 "mfcalc.y" /* yacc.c:1646  */
-    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[0]));                         }
-#line 1379 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 99 "mfcalc.y" /* yacc.c:1646  */
+    { (*(double*)(&yyval)) = (*(double*)(&yyvsp[0])); /* gets thje value of a number */ }
+#line 1387 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 92 "mfcalc.y" /* yacc.c:1646  */
-    { if((*(symrec**)(&yyvsp[0]))->type == FNCT){
+#line 100 "mfcalc.y" /* yacc.c:1646  */
+    {  //access to a var value
+                        //checks if users tries to check the value of a function
+                        if((*(symrec**)(&yyvsp[0]))->type == FNCT){
                           (*(double*)(&yyval)) = 0;
-                          showError(ERROR_VALUE_OF_FUNCTION,-1);
+                          showError(ERROR_VALUE_OF_FUNCTION);
                        }else{
+                         //gets the value of the variable if it's initialized
                          if(!(*(symrec**)(&yyvsp[0]))->initialized)
-                          showError(ERROR_NOT_INITIALICED_VARIABLE,-1);
+                          showError(ERROR_NOT_INITIALICED_VARIABLE);
                          (*(double*)(&yyval)) = (*(symrec**)(&yyvsp[0]))->value.var;
                        }
                       }
-#line 1393 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1404 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 101 "mfcalc.y" /* yacc.c:1646  */
-    { if((*(symrec**)(&yyvsp[-2]))->type == VAR){
+#line 112 "mfcalc.y" /* yacc.c:1646  */
+    { //if user is accesing a variable, initialices the value
+                      if((*(symrec**)(&yyvsp[-2]))->type == VAR){
                         (*(double*)(&yyval)) = (*(double*)(&yyvsp[0])); (*(symrec**)(&yyvsp[-2]))->value.var = (*(double*)(&yyvsp[0]));
                         (*(symrec**)(&yyvsp[-2]))->initialized = true;
                       }else{
-                        showError(ERROR_OVERWITE,-1);
+                        showError(ERROR_OVERWITE);
                         (*(double*)(&yyval)) = 0;
                       }
                      }
-#line 1406 "mfcalc.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 19:
-#line 109 "mfcalc.y" /* yacc.c:1646  */
-    {  if((*(symrec**)(&yyvsp[-3]))->type == FNCT)
-                          (*(double*)(&yyval)) = (*((*(symrec**)(&yyvsp[-3]))->value.fnctptr))((*(double*)(&yyvsp[-1])));
-                        else{
-                          (*(double*)(&yyval)) = 0;
-                          showError(ERROR_NOT_A_FUNCTION,-1);
-                        }
-                      }
 #line 1418 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
+  case 19:
+#line 121 "mfcalc.y" /* yacc.c:1646  */
+    {  //invokes a function using a expr as an argument
+                        if((*(symrec**)(&yyvsp[-3]))->type == FNCT)
+                          (*(double*)(&yyval)) = (*((*(symrec**)(&yyvsp[-3]))->value.fnctptr))((*(double*)(&yyvsp[-1])));
+                        else{
+                          (*(double*)(&yyval)) = 0;
+                          showError(ERROR_NOT_A_FUNCTION);
+                        }
+                      }
+#line 1431 "mfcalc.tab.c" /* yacc.c:1646  */
+    break;
+
   case 20:
-#line 116 "mfcalc.y" /* yacc.c:1646  */
+#line 130 "mfcalc.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) + (*(double*)(&yyvsp[0]));                    }
-#line 1424 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1437 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 117 "mfcalc.y" /* yacc.c:1646  */
+#line 131 "mfcalc.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) - (*(double*)(&yyvsp[0]));                    }
-#line 1430 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1443 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 118 "mfcalc.y" /* yacc.c:1646  */
+#line 132 "mfcalc.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) * (*(double*)(&yyvsp[0]));                    }
-#line 1436 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1449 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 119 "mfcalc.y" /* yacc.c:1646  */
-    { if((*(double*)(&yyvsp[0])) == 0)
-                        showError(ERROR_DIVISION_BY_ZERO,-1);
+#line 133 "mfcalc.y" /* yacc.c:1646  */
+    { if((*(double*)(&yyvsp[0])) == 0) //error if user divides by zero
+                        showError(ERROR_DIVISION_BY_ZERO);
                        else
                         (*(double*)(&yyval)) = (*(double*)(&yyvsp[-2])) / (*(double*)(&yyvsp[0]));                    }
-#line 1445 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1458 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 123 "mfcalc.y" /* yacc.c:1646  */
+#line 137 "mfcalc.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = -(*(double*)(&yyvsp[0]));                        }
-#line 1451 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1464 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 124 "mfcalc.y" /* yacc.c:1646  */
+#line 138 "mfcalc.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = pow ((*(double*)(&yyvsp[-2])), (*(double*)(&yyvsp[0])));               }
-#line 1457 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1470 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 125 "mfcalc.y" /* yacc.c:1646  */
+#line 139 "mfcalc.y" /* yacc.c:1646  */
     { (*(double*)(&yyval)) = (*(double*)(&yyvsp[-1]));                         }
-#line 1463 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1476 "mfcalc.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1467 "mfcalc.tab.c" /* yacc.c:1646  */
+#line 1480 "mfcalc.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1691,14 +1704,12 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 128 "mfcalc.y" /* yacc.c:1906  */
+#line 142 "mfcalc.y" /* yacc.c:1906  */
 
 
 /* Called by yyparse on error.  */
 void yyerror (char const *s){
-  /*fprintf (stderr, "%s\n", s);*/
   printf("\033[0;31m");
-  printf("Syntax error");
+  printf("%s",s);
   printf("\033[0m\n");
-  /*showError(ERROR_UNEXPECTED_WTF,-1);*/
 }

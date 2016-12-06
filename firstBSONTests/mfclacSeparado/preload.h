@@ -4,14 +4,15 @@
 #include <stdlib.h>
 #include <math.h>
 
+//structs used to initialize the symbol table
 struct initFunctions{
-  char const *fname;
-  double (*fnct) (double);
+  char const *fname;      //function name
+  double (*fnct) (double);//function pointer
 };
 
 struct initConstants{
-  char const *name;
-  double constant;
+  char const *name;       //consatant name
+  double constant;        //constant value
 };
 
 extern struct initFunctions functions[];

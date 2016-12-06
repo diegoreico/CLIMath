@@ -2,12 +2,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void showError(enum errors code, int line){
+void showError(enum errors code){
 
-  if (line >= 0)
-      printf("\033[0;31mError on line %d: ",line);
-  else
-      printf("\033[0;31m");
+  printf("\033[0;31m");
 
   switch(code){
       case ERROR_NOT_INITIALICED_VARIABLE:

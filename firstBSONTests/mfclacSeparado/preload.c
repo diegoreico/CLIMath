@@ -1,6 +1,8 @@
 #include "preload.h"
 #include "mfcalc.tab.h"
 
+
+//default values for symbol table
 struct initFunctions functions[] = {
   { "atan", atan },
   { "cos",  cos  },
@@ -17,7 +19,7 @@ struct initConstants constants[] = {
   { 0, 0 },
 };
 
-/* Put arithmetic functions in table.  */
+//puts the functions in the symbol table
 void init_table_functions (struct initFunctions* arith_fncts)
 {
   int i;
@@ -29,6 +31,7 @@ void init_table_functions (struct initFunctions* arith_fncts)
     }
 }
 
+//puts the constants in the symbol table
 void init_table_constants (struct initConstants* arith_fncts)
 {
   int i;
